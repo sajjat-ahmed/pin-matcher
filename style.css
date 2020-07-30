@@ -76,7 +76,7 @@ input[type='text']:focus {
     cursor: pointer;
 }
 .blink-me {
-co  lor: #E0B612;
+    color: #E0B612;
 }
 .submit-btn {
     border: none;
@@ -115,5 +115,5 @@ co  lor: #E0B612;
     margin-top: 10px;
 }
 input{
-    color: white!important;
+    color: white !important;
 }

@@ -18,36 +18,34 @@
             </div>
             <div class="col-md-6">
                 <div class="input-section half-width">
-                    <!-- <form name="calc" > -->
-                        <input id="input-pin" class="form-control" name="txt" type="text">
+                        <input id="input-pin" class="form-control" type="text">
                         <div class="numbers">
                             <div class="calc-body">
                                 <div class="calc-button-row">
-                                    <div class="button" onclick="document.calc.txt.value +='7'">7</div>
-                                    <div class="button" onclick="document.calc.txt.value +='8'">8</div>
-                                    <div class="button" onclick="document.calc.txt.value +='9'">9</div>
+                                    <div id="7" class="button">7</div>
+                                    <div id="8" class="button">8</div>
+                                    <div id="9" class="button">9</div>
                                 </div>
                                 <div class="calc-button-row">
-                                    <div class="button" onclick="document.calc.txt.value +='4'">4</div>
-                                    <div class="button" onclick="document.calc.txt.value +='5'">5</div>
-                                    <div class="button" onclick="document.calc.txt.value +='6'">6</div>
+                                    <div id="4" class="button">4</div>
+                                    <div id="5" class="button">5</div>
+                                    <div id="6" class="button">6</div>
                                 </div>
                                 <div class="calc-button-row">
-                                    <div class="button" onclick="document.calc.txt.value +='1'">1</div>
-                                    <div class="button" onclick="document.calc.txt.value +='2'">2</div>
-                                    <div class="button" onclick="document.calc.txt.value +='3'">3</div>
+                                    <div id="1" class="button">1</div>
+                                    <div id="2" class="button">2</div>
+                                    <div id="3" class="button">3</div>
                                 </div>
                                 <div class="calc-button-row">
-                                    <div class="button" onclick="document.calc.txt.value =''"><</div>
-                                    <div class="button" onclick="document.calc.txt.value +='0'">0</div>
-                                    <div class="button" onclick="document.calc.txt.value =''">C</div>
+                                    <div id="single-clean-input" class="button"><</div>
+                                    <div id="0" class="button">0</div>
+                                    <div id="clean-input" class="button">C</div>
                                 </div>
                                 <div>
                                     <button id="submit-pin" type="submit" class="submit-btn">Submit</button>
                                     <p class="action-left">3 try left</p>
                                 </div>
                         </div>
-                    <!-- </form> -->
                 </div>
             </div>
         </div>
@@ -70,6 +68,29 @@
                 document.getElementById('random-pin').value = 9999;
             }
         })
+
+        //number pad event handler
+        var button = document.getElementsByClassName('button');
+        for(var i = 0; i < button.length; i++){
+            button[i].addEventListener('click', function(){
+                var output = document.getElementById('input-pin').value;
+                if(output != NaN){
+                    output = output + this.id;
+                    document.getElementById('input-pin').value = output;
+                }
+            })
+        }
+
+        //clean input event handler
+        document.getElementById('clean-input').addEventListener('click', function(){
+            var inputPin = document.getElementById('input-pin').value = "";
+        })
+
+        //single clean input event handler
+        document.getElementById('single-clean-input').addEventListener('click', function(){
+            var output = document.getElementById('input-pin').value;
+            var inputPin = document.getElementById('input-pin').value = output.length - 1;
+        })
         
         //submit pin event handler
         document.getElementById('submit-pin').addEventListener('click', function(){
@@ -88,7 +109,6 @@
             }
         })
         
-
     </script>
 </body>
 </html>
